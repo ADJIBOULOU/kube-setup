@@ -63,9 +63,13 @@ apt install -y kubelet kubeadm kubectl
 
 sudo apt-mark hold kubelet kubeadm kubectl
 
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+
 mv /etc/containerd/config.toml /etc/containerd/config.toml.bak
 ls
 systemctl restart containerd
+
 
 ### At the level of master to pull down images that are serving (Api server, kube controler manager, kube scheduler)
 
