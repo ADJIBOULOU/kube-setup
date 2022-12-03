@@ -102,3 +102,6 @@ systemctl restart kubelet
 run the command key token on the worker node
 
 systemctl restart kubelet 
+systemctl restart kubelet across board
+export KUBECONFIG=/etc/kubernetes/admin.conf    on the master
+
