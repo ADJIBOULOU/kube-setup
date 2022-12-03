@@ -94,9 +94,11 @@ https://www.weave.works/docs/net/latest/kubernetes/kube-addon/#install
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 
 
-
+systemctl restart kubelet 
 
 
 
 ### Run this on the worker node 
 run the command key token on the worker node
+
+systemctl restart kubelet 
