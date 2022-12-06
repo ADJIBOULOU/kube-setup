@@ -32,20 +32,25 @@ apt install -y docker-ce
 ###ls /etc to check docker folder
 
 ## setting docker in systemd to use systemctl commands 
+
 cat <<EOF | sudo tee /etc/docker/daemon.json
 {
 "exec-opts": ["native.cgroupdriver=systemd"]
 }
 EOF
+
 systemctl enable --now docker
 
 usermod -aG docker ubuntu
+
 ## restart docker deamon 
+
 systemctl restart docker
 
 swapoff -a
 
 ##pesist swap config using fstab
+
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 sysctl net.bridge.bridge-nf-call-iptables=1
@@ -67,7 +72,9 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 
 
 mv /etc/containerd/config.toml /etc/containerd/config.toml.bak
+
 ls
+
 systemctl restart containerd
 
 
@@ -91,6 +98,8 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 
 ###setting up weave download weave service  
 https://www.weave.works/docs/net/latest/kubernetes/kube-addon/#install
+
+
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 
 
@@ -102,6 +111,8 @@ systemctl restart kubelet
 run the command key token on the worker node
 
 systemctl restart kubelet 
+
 systemctl restart kubelet across board
+
 export KUBECONFIG=/etc/kubernetes/admin.conf    on the master
 
